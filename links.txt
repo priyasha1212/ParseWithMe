@@ -1,0 +1,244 @@
+Topic: pahalgam_instagram
+[
+
+​{
+​​url: 'https://www.instagram.com/p/DI0e4kypbjf/',
+​​username: 'https://www.instagram.com/rudraaaaaax/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DIxntyGJsRo/',
+​​username: 'https://www.instagram.com/writerofpunjab/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DI_9sdzh8_Z/',
+​​username: 'https://www.instagram.com/lotusofsaraswati/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DI-tBkLt7cv/',
+​​username: 'https://www.instagram.com/p/DI-tBkLt7cv/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DIwW633hY6b/',
+​​username: 'https://www.instagram.com/flyinghumour/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DI5heexzzFM/',
+​​username: 'https://www.instagram.com/southcassette/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DJXCylJtZH3/',
+​​username: 'https://www.instagram.com/indiainlast24hr/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DIyGuzHvYHZ/',
+​​username: 'https://www.instagram.com/official_artkrafter/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DI0ftNOIR_s/',
+​​username: 'https://www.instagram.com/thebetterindia/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DI3zHz1Ph2G/',
+​​username: 'https://www.instagram.com/log.kya.kahenge/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DJVvC0Tu1a8/',
+​​username: 'https://www.instagram.com/verifiedspicequeen/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DJYf1bht2Vm/',
+​​username: 'https://www.instagram.com/instantbollywood/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DI6JgB6Sjcu/',
+​​username: 'https://www.instagram.com/the_hindu/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DIzCUoiTteA/',
+​​username: 'https://www.instagram.com/lovindubai/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DIweiapSvxr/',
+​​username: 'https://www.instagram.com/anandsanam/'
+​},
+
+]
+
+Topic: plane crash_instagram
+[
+
+​{
+​​url: 'https://www.instagram.com/p/DK0L8GhtYMD/',
+​​username: 'https://www.instagram.com/airplanetechnology/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DKzJK_RTCO0/',
+​​username: 'https://www.instagram.com/jagan_brs/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DK6WOh3TrqK/',
+​​username: 'https://www.instagram.com/factlyindia/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DK6YVtGJBTr/',
+​​username: 'https://www.instagram.com/hindu_gurukul_/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DK0pyJcAAOh/',
+​​username: 'https://www.instagram.com/tv9bharatvarsh/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DKzYcNqu4Y7/',
+​​username: 'https://www.instagram.com/live_mint/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DKzWo6Ni71R/',
+​​username: 'https://www.instagram.com/talksleak/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DKznjIiT3Z0/',
+​​username: 'http://instagram.com/tv9bharatvarsh/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DKzHEX_TUZ5/',
+​​username: 'https://www.instagram.com/khaleejtimes/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DEKPoTlo0Ft/',
+​​username: 'https://www.instagram.com/m24news/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DKzN5RrxgUu/',
+​​username: 'https://www.instagram.com/gulfnews/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DK2MW81ySWJ/',
+​​username: 'https://www.instagram.com/moneycontrol_hindi/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DK1hwjbvZjr/',
+​​username: 'https://www.instagram.com/suryasamacharin/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DEJvHcIv1Kz/',
+​​username: 'https://www.instagram.com/aviationnews___/'
+​},
+
+​{
+​​url: 'https://www.instagram.com/p/DKzHKBdT_lV/',
+​​username: 'https://www.instagram.com/samirmetex/'
+​},
+
+]
+
+Topic: pahalgam_facebook
+[
+
+​{
+​​url: 'https://www.facebook.com/JKNewspointOffcial/videos/1012654857749964',
+​​username: 'https://www.facebook.com/JKNewspointOffcial'
+​},
+
+​{
+​​url: 'https://www.facebook.com/News18India/videos/877925461133418',
+​​username: 'https://www.facebook.com/News18India'
+​},
+
+​{
+​​url: 'https://www.facebook.com/cnnnews18/videos/4038078113109955',
+​​username: 'https://www.facebook.com/cnnnews18'
+​},
+
+​{
+​​url: 'https://www.facebook.com/IndiaToday/videos/1839195493510573',
+​​username: 'https://www.facebook.com/IndiaToday'
+​},
+
+​{
+​​url: 'https://www.facebook.com/TimesofIndia/videos/603600289362191',
+​​username: 'https://www.facebook.com/TimesofIndia'
+​},
+
+​{
+​​url: 'https://www.facebook.com/crimetakofficial/videos/1385606059159256',
+​​username: 'https://www.facebook.com/crimetakofficial'
+​},
+
+​{
+​​url: 'https://www.facebook.com/crimetakofficial/videos/1680404892585102',
+​​username: 'https://www.facebook.com/crimetakofficial'
+​},
+
+​{
+​​url: 'https://www.facebook.com/bbcindia/videos/9633689120025954',
+​​username: 'https://www.facebook.com/bbcindia'
+​},
+
+​{
+​​url: 'https://www.facebook.com/crimetakofficial/videos/1381350306618829',
+​​username: 'https://www.facebook.com/crimetakofficial'
+​},
+
+​{
+​​url: 'https://www.facebook.com/DailyGreaterKashmir/videos/562074163581309',
+​​username: 'https://www.facebook.com/DailyGreaterKashmir'
+​},
+
+]
+
+Topic: plane crash_facebook
+[
+
+{
+​​url: 'https://www.facebook.com/ZeeNews/videos/2150834998723761',
+​​username: 'https://www.facebook.com/ZeeNews'
+​},
+
+{
+​​url: 'https://www.facebook.com/photo/?fbid=678173448314383&set=a.153541744110892',
+​​username: 'https://www.facebook.com/joshrinconofficial'
+​},
+
+{
+​​url: 'https://www.facebook.com/IndiaToday/videos/697502519581962',
+​​username: 'https://www.facebook.com/IndiaToday'
+​},
+
+{
+​​url: 'https://www.facebook.com/photo/?fbid=1094638889365512&set=a.619135803582492',
+​​username: 'https://www.facebook.com/realratedred'
+​},
+
+{
+​​url: 'https://www.facebook.com/WIONews/videos/703788919073826',
+​​username: 'https://www.facebook.com/WIONews'
+​},
+
+]
