@@ -99,26 +99,36 @@
     }
     
     /* Navigation */
-    nav {
-      display: flex;
-      gap: 0.5rem;
-    }
-    
-    nav a {
-      color: #e0e7ff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.5rem;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      white-space: nowrap;
-    }
-    
-    nav a:hover {
-      color: #ec4899;
-      background: rgba(236, 72, 153, 0.1);
-      text-decoration: none;
-    }
+nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Default styles for website */
+nav a {
+  color: #e0e7ff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* WebView-specific styles */
+@media all and (display-mode: standalone) {
+  nav a {
+    font-size: 0.8rem;  /* Smaller font size in app */
+    padding: 0.4rem;    /* Smaller padding in app */
+  }
+}
+
+/* Hover effects (same for both) */
+nav a:hover {
+  color: #ec4899;
+  background: rgba(236, 72, 153, 0.1);
+  text-decoration: none;
+}
     
     /* Main Content */
     main {
