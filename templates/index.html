@@ -119,6 +119,13 @@
       text-decoration: none;
     }
     
+    /* Hide navigation links except Login in mobile view */
+    @media (max-width: 767px) {
+      nav a:not([onclick*="openAuthModal"]) {
+        display: none;
+      }
+    }
+    
     /* Main Content */
     main {
       padding-top: 80px;
@@ -484,6 +491,11 @@
       nav a {
         font-size: 1.125rem;
         padding: 6px 12px;
+      }
+      
+      /* Show all navigation links on desktop */
+      nav a {
+        display: inline-block !important;
       }
       
       main {
@@ -984,145 +996,4 @@ function showParseResults(res, isShuffle) {
       <span class="font-semibold text-purple-200">
         ${p.username ? `<a href='https://instagram.com/${p.username}' target='_blank' class='underline text-purple-200'>@${p.username}</a>` : ''}
       </span>
-      <span>${p.caption || ''}</span>
-      ${p.image_url ? `<img src='${p.image_url}' class='rounded mt-2 max-h-40 object-cover border border-purple-400/30' alt='Instagram post'/>` : ''}
-      ${p.url ? `<a href='${p.url}' target='_blank' class='underline text-purple-200'>View Post</a>` : ''}
-    </li>`
-  );
-  html += platformCard(
-    'Facebook',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png',
-    'indigo',
-    res.facebook_videos,
-    v => `<li class="bg-indigo-800/30 rounded p-2 flex flex-col gap-1">
-      <span class="font-semibold text-indigo-200">
-        ${v.username ? `<a href='https://facebook.com/${v.username}' target='_blank' class='underline text-indigo-200'>${v.username}</a>` : ''}
-      </span>
-      <span>${v.title || ''}</span>
-      ${v.url ? `<a href='${v.url}' target='_blank' class='underline text-indigo-200'>View Post</a>` : ''}
-    </li>`
-  );
-
-  html += '</div>';
-  html += '<div class="flex gap-4 mt-6"><button class="btn flex-1" onclick="savePDFButton()">Save PDF</button><button class="btn btn-secondary flex-1" onclick="shuffleResults()">Shuffle Results</button></div>';
-  resultDiv.innerHTML = html;
-  resultDiv.style.display = 'block';
-}
-    
-    // --- Save pad ---
-    function savePad() {
-      const pad = document.getElementById('parseResult').innerHTML;
-      apiPost('/save', { pad }).then(res => {
-        if (res.success) {
-          alert('Pad saved!');
-          loadPads();
-        } else {
-          alert('Failed to save pad');
-        }
-      });
-    }
-    
-    // --- History ---
-    function loadHistory() {
-      apiGet('/history').then(res => {
-        showHistory(res.history || []);
-        // showHistoryBox(); // removed
-      });
-    }
-    function showHistory(history) {
-      let histDiv = document.getElementById('historyDiv');
-      if (!histDiv) {
-        histDiv = document.createElement('div');
-        histDiv.id = 'historyDiv';
-        histDiv.className = 'parse-result';
-        document.querySelector('#parse').appendChild(histDiv);
-      }
-      let clearBtn = `<button class="btn btn-secondary mb-2" onclick="clearHistory()">Clear History</button>`;
-      histDiv.innerHTML = '<h3>Search History</h3>' + clearBtn + (history.length ? '<ul>' + history.map(h => `<li>${h}</li>`).join('') + '</ul>' : '<i>No history</i>');
-      histDiv.style.display = 'block';
-    }
-    function clearHistory() {
-      apiPost('/history/clear', {}).then(() => {
-        loadHistory();
-      });
-    }
-    function clearHistoryUI() {
-      const histDiv = document.getElementById('historyDiv');
-      if (histDiv) histDiv.style.display = 'none';
-    }
-    
-    // --- Pads ---
-    function loadPads() {}
-    function showPads() {}
-    function clearPadsUI() {
-      const padDiv = document.getElementById('padsDiv');
-      if (padDiv) padDiv.remove();
-    }
-    
-    // --- PDF (was pad) ---
-    function savePDFButton() {
-      savePDF();
-    }
-    function loadPDFs() {
-      apiGet('/pdfs').then(res => {
-        showPDFs(res.pdfs || []);
-        showPDFBox();
-      });
-    }
-    function showPDFs(pdfs) {
-      let pdfDiv = document.getElementById('pdfsDiv');
-      if (!pdfDiv) {
-        pdfDiv = document.createElement('div');
-        pdfDiv.id = 'pdfsDiv';
-        pdfDiv.className = 'parse-result';
-        document.querySelector('#parse').appendChild(pdfDiv);
-      }
-      pdfDiv.innerHTML = '<h3>Saved PDFs</h3>' + (pdfs.length ? '<ul>' + pdfs.map((p, i) => `<li>PDF ${i+1}: <a href="/pdfs/${encodeURIComponent(p)}" target="_blank" class="underline">Download</a></li>`).join('') + '</ul>' : '<i>No PDFs saved</i>');
-      pdfDiv.style.display = 'block';
-    }
-    function clearPDFsUI() {
-      const pdfDiv = document.getElementById('pdfsDiv');
-      if (pdfDiv) pdfDiv.style.display = 'none';
-    }
-    
-    // --- Attach event handlers ---
-    document.querySelector('#loginForm .btn').onclick = handleLogin;
-    document.querySelector('#signupForm .btn').onclick = handleSignup;
-    
-    // On load, check if logged in (try to load history/pads)
-    window.addEventListener('DOMContentLoaded', () => {
-      updateAuthUI();
-      // Hide history and PDF boxes until login
-      const pdfBox = document.getElementById('pdfBox');
-      if (pdfBox) pdfBox.style.display = 'none';
-    });
-    
-    // Close modal when clicking outside
-    window.addEventListener('click', (event) => {
-      if (event.target.classList.contains('modal')) {
-        closeModal('authModal');
-      }
-    });
-    
-    function showHistoryBox() {
-  apiGet('/history').then(res => {
-    const box = document.getElementById('historyBox');
-    if (!box) return;
-    box.innerHTML = '<h3 class="font-bold mb-2">Search History</h3>' +
-      (res.history && res.history.length ? '<ul>' + res.history.map(h => {
-        // Try to extract keyword, timestamp, and username from the history string
-        let match = h.match(/^(.*?)\s+—\s+(.*?)\s+—\s+(.*)$/);
-        let keyword = h, timestamp = '', username = '';
-        if (match) {
-          keyword = match[1];
-          timestamp = match[2];
-          username = match[3];
-        }
-        return `<li><span class='font-semibold'>${keyword}</span> <span class='text-xs text-gray-400'>${timestamp}</span> <span class='text-xs text-green-400 ml-2'>@${username}</span> <a href="#" class="underline text-blue-300 ml-2" title="Go to result" onclick="startParsingFromHistory('${keyword.replace(/'/g, '\'')}')">🔎</a></li>`;
-      }).join('') + '</ul>' : '<div>No history yet.</div>');
-    box.style.display = 'block';
-  });
-}
-  </script>
-</body>
-</html>
+      <span>${p.caption || ''
