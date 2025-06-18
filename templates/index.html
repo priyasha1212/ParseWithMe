@@ -2,24 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>PARSEwithMe</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Base Styles */
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0f0f0f, #2a2a2a);
       color: white;
-      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
+    
+    * {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+    
     .highlight {
       color: #d8b4fe;
       font-weight: 700;
     }
+    
     h1, h2, h3 {
       color: #c4b5fd;
     }
+    
     .btn {
       background: linear-gradient(90deg, #6366f1, #ec4899);
       color: white;
@@ -31,142 +50,169 @@
       cursor: pointer;
       user-select: none;
       border: none;
+      display: inline-block;
+      text-align: center;
     }
+    
     .btn:hover {
       transform: scale(1.05);
       background: linear-gradient(90deg, #4f46e5, #db2777);
       box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
     }
+    
     .btn-secondary {
       background: transparent;
       border: 2px solid #6366f1;
       color: white;
     }
+    
     .btn-secondary:hover {
       background: rgba(99, 102, 241, 0.1);
       box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
     }
+    
+    /* Header */
     header {
       background: #000000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav a {
-      color: #e0e7ff;
-      font-weight: 600;
-      font-size: 1.125rem;
-      padding: 6px 12px;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-    }
-    nav a:hover {
-      color: #ec4899;
-      background: rgba(236, 72, 153, 0.1);
-      text-decoration: none;
-    }
+    
     .logo-text {
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       background: linear-gradient(90deg, #ec4899, #6366f1);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
       letter-spacing: 1px;
+    }
+    
+    /* Navigation */
+    nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    nav a {
+      color: #e0e7ff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.5rem;
       transition: all 0.3s ease;
+      border-radius: 8px;
+      white-space: nowrap;
     }
-    .logo-text:hover {
-      text-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-      transform: scale(1.02);
+    
+    nav a:hover {
+      color: #ec4899;
+      background: rgba(236, 72, 153, 0.1);
+      text-decoration: none;
     }
+    
+    /* Main Content */
     main {
-      padding-top: 100px;
-      max-width: 900px;
+      padding-top: 80px;
+      padding-bottom: 40px;
+      width: 100%;
+      max-width: 100%;
       margin: 0 auto;
     }
+    
     section {
-      margin-bottom: 8rem;
+      padding: 1.5rem;
+      width: 100%;
+      margin-bottom: 2rem;
     }
+    
     #home {
-      min-height: 100vh;
+      min-height: calc(100vh - 80px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       text-align: center;
-      padding: 2rem;
     }
+    
     #home h2 {
-      font-size: 4rem;
-      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
       line-height: 1.2;
     }
+    
     #home p {
-      font-size: 1.5rem;
-      line-height: 1.7;
-      max-width: 750px;
-      margin: 0 auto 3rem auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 100%;
+      margin: 0 auto 2rem auto;
       color: #d1d5db;
     }
+    
     #home ul {
       text-align: left;
-      max-width: 600px;
-      margin: 0 auto 3rem auto;
-      font-size: 1.25rem;
-      line-height: 1.8;
+      max-width: 100%;
+      margin: 0 auto 2rem auto;
+      font-size: 1rem;
+      line-height: 1.6;
+      padding-left: 1rem;
     }
+    
     #home ul li {
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       position: relative;
-      padding-left: 2rem;
+      padding-left: 1.5rem;
     }
+    
     #home ul li:before {
       content: "→";
       position: absolute;
       left: 0;
       color: #ec4899;
     }
+    
     .cta-buttons {
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
       justify-content: center;
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
     
-    /* Updated Platforms Section */
+    /* Platforms Section */
     .platforms-container {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
       width: 100%;
     }
     
     .platforms-row {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 1rem;
       width: 100%;
-    }
-    
-    /* First row - 3 cards */
-    .platforms-row:first-child {
-      justify-content: space-between;
-    }
-    
-    /* Second row - 2 centered cards */
-    .platforms-row:last-child {
-      justify-content: center;
-      gap: 4rem;
     }
     
     .platform-card {
       background: rgba(30, 41, 59, 0.7);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 1.5rem;
       text-align: center;
       transition: all 0.3s ease;
       border: 1px solid rgba(99, 102, 241, 0.2);
-      width: 250px;
+      min-width: 160px;
+      flex: 1 1 160px;
+      max-width: 220px;
     }
     
     .platform-card:hover {
@@ -174,145 +220,118 @@
       box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
       border-color: rgba(99, 102, 241, 0.5);
     }
+    
     .platform-card img {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 1.5rem auto;
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 1rem auto;
       object-fit: contain;
     }
+    
     .platform-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
     }
-    /* Modal Styling */
-    .modal {
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(5px);
+    
+    .platform-card p {
+      font-size: 0.9rem;
     }
-    .modal-content {
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 16px;
-      max-width: 420px;
-      box-shadow: 0 0 30px rgba(236, 72, 153, 0.4);
-      color: white;
-      animation: modalFadeIn 0.3s ease-out;
-    }
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .auth-tabs {
-      display: flex;
-      margin-bottom: 25px;
-      border-bottom: 1px solid #334155;
-    }
-    .auth-tab {
-      padding: 12px 20px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #94a3b8;
-      transition: all 0.3s ease;
-      border-bottom: 3px solid transparent;
-    }
-    .auth-tab.active {
-      color: #ec4899;
-      border-bottom: 3px solid #ec4899;
-    }
-    .auth-tab:hover {
-      color: #d8b4fe;
-    }
-    .auth-form {
-      display: none;
-    }
-    .auth-form.active {
-      display: block;
-    }
-    .form-input {
+    
+    /* Parse Section */
+    .parse-container {
       width: 100%;
-      padding: 14px 16px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .parse-input {
+      width: 100%;
+      padding: 12px 14px;
       border-radius: 10px;
       border: 2px solid #334155;
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
       font-size: 1rem;
       color: white;
       background: rgba(15, 23, 42, 0.7);
-      transition: all 0.3s ease;
     }
-    .form-input:focus {
+    
+    .parse-input:focus {
       outline: none;
       border-color: #6366f1;
       box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     }
-    .form-footer {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #94a3b8;
+    
+    .parse-result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.7);
+      display: none;
     }
-    .form-footer a {
-      color: #d8b4fe;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .form-footer a:hover {
-      color: #ec4899;
-      text-decoration: underline;
-    }
+    
+    /* About Section */
     #about {
       text-align: center;
     }
+    
     #about h2 {
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
       position: relative;
       display: inline-block;
     }
+    
     #about h2:after {
       content: "";
       position: absolute;
-      bottom: -10px;
+      bottom: -8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      width: 80px;
       height: 3px;
       background: linear-gradient(90deg, #ec4899, #6366f1);
     }
+    
     #about p {
-      font-size: 1.25rem;
-      line-height: 1.8;
-      max-width: 700px;
-      margin: 0 auto 2rem auto;
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 100%;
+      margin: 0 auto 1.5rem auto;
       color: #cbd5e1;
       text-align: left;
     }
+    
     .team-members {
       display: flex;
-      justify-content: flex-start;
-      gap: 2rem;
       flex-wrap: wrap;
-      margin-top: 3rem;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
+    
     .team-member {
       background: rgba(30, 41, 59, 0.7);
       border-radius: 16px;
-      padding: 1.5rem;
-      width: 200px;
+      padding: 1.25rem;
+      width: 160px;
       transition: all 0.3s ease;
     }
+    
     .team-member:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
     }
+    
     .team-member h3 {
       color: #d8b4fe;
       margin: 1rem 0 0.5rem 0;
+      font-size: 1.1rem;
     }
-    .team-member p {
-      color: #94a3b8;
-      font-size: 1rem;
-      text-align: center;
-      margin: 0;
-    }
+    
     /* Loading Spinner */
     .loading-spinner {
       border: 4px solid rgba(255, 255, 255, 0.1);
@@ -322,47 +341,169 @@
       height: 40px;
       animation: spin 1s linear infinite;
       margin: 20px auto;
+      display: none;
     }
+    
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    .parse-container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-      background: rgba(30, 41, 59, 0.7);
-      border-radius: 16px;
-      border: 1px solid rgba(99, 102, 241, 0.2);
+    
+    /* Modal Styling */
+    .modal {
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
     }
-    .parse-input {
+    
+    .modal-content {
+      background: #1e293b;
+      padding: 1.5rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 30px rgba(236, 72, 153, 0.4);
+      color: white;
+      animation: modalFadeIn 0.3s ease-out;
+    }
+    
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .auth-tabs {
+      display: flex;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #334155;
+    }
+    
+    .auth-tab {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: #94a3b8;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+      font-size: 0.95rem;
+    }
+    
+    .auth-tab.active {
+      color: #ec4899;
+      border-bottom: 3px solid #ec4899;
+    }
+    
+    .auth-tab:hover {
+      color: #d8b4fe;
+    }
+    
+    .auth-form {
+      display: none;
+    }
+    
+    .auth-form.active {
+      display: block;
+    }
+    
+    .form-input {
       width: 100%;
-      padding: 14px 16px;
+      padding: 12px 14px;
       border-radius: 10px;
       border: 2px solid #334155;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
       font-size: 1rem;
       color: white;
       background: rgba(15, 23, 42, 0.7);
     }
-    .parse-input:focus {
+    
+    .form-input:focus {
       outline: none;
       border-color: #6366f1;
       box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     }
-    .parse-result {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      background: rgba(15, 23, 42, 0.7);
-      display: none;
+    
+    .form-footer {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    
+    /* Scroll animations */
+    .opacity-0 {
+      opacity: 0;
+    }
+    
+    .transition-opacity {
+      transition: opacity 0.7s ease-in-out;
+    }
+    
+    /* Media Queries for Larger Screens */
+    @media (min-width: 768px) {
+      header {
+        padding: 1rem 2rem;
+      }
+      
+      .logo-text {
+        font-size: 1.8rem;
+      }
+      
+      nav a {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      main {
+        padding-top: 100px;
+        max-width: 900px;
+      }
+      
+      section {
+        padding: 2rem;
+      }
+      
+      #home h2 {
+        font-size: 3rem;
+      }
+      
+      #home p {
+        font-size: 1.25rem;
+        max-width: 700px;
+      }
+      
+      #home ul {
+        max-width: 600px;
+        font-size: 1.1rem;
+      }
+      
+      .platform-card {
+        padding: 1.75rem;
+        min-width: 200px;
+        max-width: 250px;
+      }
+      
+      .platform-card img {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .parse-container {
+        padding: 2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="flex justify-between items-center px-8 py-4 fixed top-0 left-0 right-0 z-50">
+  <header>
     <div class="logo-text">PARSEwithME</div>
-    <nav class="flex space-x-2">
+    <nav>
       <a href="#home">Home</a>
       <a href="#platforms">Platforms</a>
       <a href="#parse">Parse</a>
@@ -389,10 +530,9 @@
       </div>
     </section>
 
-    <section id="platforms" class="opacity-0 transition-opacity duration-700 ease-in-out">
-      <h2 class="text-center text-3xl mb-12">Supported Platforms</h2>
+    <section id="platforms" class="opacity-0 transition-opacity">
+      <h2 class="text-center" style="font-size: 2rem; margin-bottom: 2rem;">Supported Platforms</h2>
       <div class="platforms-container">
-        <!-- First Row - 3 Cards -->
         <div class="platforms-row">
           <div class="platform-card">
             <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
@@ -411,7 +551,6 @@
           </div>
         </div>
         
-        <!-- Second Row - 2 Centered Cards -->
         <div class="platforms-row">
           <div class="platform-card">
             <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
@@ -427,30 +566,27 @@
       </div>
     </section>
 
-    <section id="parse" class="opacity-0 transition-opacity duration-700 ease-in-out">
-      <h2 class="text-center text-3xl mb-12">Parse Social Media Content</h2>
+    <section id="parse" class="opacity-0 transition-opacity">
+      <h2 class="text-center" style="font-size: 2rem; margin-bottom: 2rem;">Parse Social Media Content</h2>
       <div class="parse-container">
         <input type="text" id="keywordInput" placeholder="Enter keyword or URL to parse" class="parse-input" />
-        <button class="btn w-full" onclick="startParsing()">Start Parsing</button>
+        <button class="btn" style="width: 100%;" onclick="startParsing()">Start Parsing</button>
         
-        <div id="loadingIndicator" class="loading-spinner hidden"></div>
+        <div id="loadingIndicator" class="loading-spinner"></div>
         
         <div id="parseResult" class="parse-result">
-          <h3 class="text-xl mb-2">Parsing Complete!</h3>
-          <p class="mb-4">Your PDF report is ready to download.</p>
-          <a id="downloadPdf" href="#" class="btn w-full" download>Download PDF Report</a>
+          <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Parsing Complete!</h3>
+          <p style="margin-bottom: 1rem;">Your PDF report is ready to download.</p>
+          <a id="downloadPdf" href="#" class="btn" style="width: 100%;" download>Download PDF Report</a>
         </div>
-        <div id="pdfBox" class="parse-result" style="display:none;"></div>
       </div>
     </section>
 
-    <section id="about" class="opacity-0 transition-opacity duration-700 ease-in-out">
+    <section id="about" class="opacity-0 transition-opacity">
       <h2>Meet the Team</h2>
-
       <p>
         We're three passionate computer science students from Dronacharya College of Engineering who came together to build PARSEwithMe as part of our FAER Scholar Program submission. What began as an academic project quickly evolved into a mission to support digital forensic investigations.
       </p>
-      
       <p>
         We believe technology should make processes simpler, smarter, and more secure — and we hope this tool takes one step in that direction.
       </p>
@@ -459,15 +595,15 @@
       </p>
       <div class="team-members">
         <div class="team-member">
-          <img src="https://ui-avatars.com/api/?name=Priyasha+Sharma&background=6366f1&color=fff&size=100" alt="Priyasha Sharma" class="rounded-full mx-auto">
+          <img src="https://ui-avatars.com/api/?name=Priyasha+Sharma&background=6366f1&color=fff&size=100" alt="Priyasha Sharma" style="border-radius: 50%; margin: 0 auto;">
           <h3>Priyasha Sharma</h3>
         </div>
         <div class="team-member">
-          <img src="https://ui-avatars.com/api/?name=Nikita+Pandita&background=ec4899&color=fff&size=100" alt="Nikita Pandita" class="rounded-full mx-auto">
+          <img src="https://ui-avatars.com/api/?name=Nikita+Pandita&background=ec4899&color=fff&size=100" alt="Nikita Pandita" style="border-radius: 50%; margin: 0 auto;">
           <h3>Nikita Pandita</h3>
         </div>
         <div class="team-member">
-          <img src="https://ui-avatars.com/api/?name=Yash+Yadav&background=8b5cf6&color=fff&size=100" alt="Yash Yadav" class="rounded-full mx-auto">
+          <img src="https://ui-avatars.com/api/?name=Yash+Yadav&background=8b5cf6&color=fff&size=100" alt="Yash Yadav" style="border-radius: 50%; margin: 0 auto;">
           <h3>Yash Yadav</h3>
         </div>
       </div>
@@ -475,30 +611,28 @@
   </main>
 
   <!-- Auth Modal -->
-  <div id="authModal" class="modal fixed inset-0 hidden flex items-center justify-center z-50">
+  <div id="authModal" class="modal">
     <div class="modal-content">
       <div class="auth-tabs">
         <div class="auth-tab active" onclick="switchAuthTab('login')">Login</div>
-        <!-- Sign Up tab removed -->
+        <div class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</div>
       </div>
       
-      <!-- Login Form -->
       <div id="loginForm" class="auth-form active">
         <input type="text" placeholder="Username or Email" class="form-input" />
         <input type="password" placeholder="Password" class="form-input" />
-        <button class="btn w-full">Login</button>
+        <button class="btn" style="width: 100%;" onclick="handleLogin()">Login</button>
         <div class="form-footer">
-          <!-- Removed Forgot password and Sign up links -->
+          <span>Don't have an account? <a onclick="switchAuthTab('signup')" class="cursor-pointer">Sign up</a></span>
         </div>
       </div>
       
-      <!-- Signup Form -->
       <div id="signupForm" class="auth-form">
         <input type="text" placeholder="Username" class="form-input" />
         <input type="email" placeholder="Email" class="form-input" />
         <input type="password" placeholder="Password" class="form-input" />
         <input type="password" placeholder="Confirm Password" class="form-input" />
-        <button class="btn w-full">Create Account</button>
+        <button class="btn" style="width: 100%;" onclick="handleSignup()">Create Account</button>
         <div class="form-footer">
           <span>Already have an account? <a onclick="switchAuthTab('login')" class="cursor-pointer">Login</a></span>
         </div>
@@ -513,19 +647,19 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.remove('opacity-0');
-          entry.target.classList.add('opacity-100');
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
+    
     sections.forEach(section => observer.observe(section));
     
     // Modal functions
     function openModal(id) {
-      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).style.display = 'flex';
     }
     
     function closeModal(id) {
-      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).style.display = 'none';
     }
     
     // Auth modal functions
@@ -547,372 +681,57 @@
       document.getElementById(`${formType}Form`).classList.add('active');
     }
     
-    // --- API helpers ---
-    async function apiPost(url, data) {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'same-origin',
-        body: JSON.stringify(data)
-      });
-      return res.json();
-    }
-    async function apiGet(url) {
-      const res = await fetch(url, { credentials: 'same-origin' });
-      return res.json();
-    }
-    
-    // --- Auth logic ---
+    // Auth logic
     let currentUser = null;
     
-    // Login
     function handleLogin() {
       const inputs = document.querySelectorAll('#loginForm .form-input');
       const username = inputs[0].value.trim();
       const password = inputs[1].value;
-      apiPost('/login', { username, password }).then(res => {
-        if (res.success) {
-          currentUser = res.username;
-          closeModal('authModal');
-          updateAuthUI();
-          loadPDFs();
-          showPDFBox();
-        } else {
-          alert('Login failed: ' + (res.error || 'Invalid credentials'));
-        }
-      });
+      
+      // Simulate login
+      currentUser = username;
+      closeModal('authModal');
+      alert('Login successful! (Simulated)');
     }
-    // Signup
+    
     function handleSignup() {
       const inputs = document.querySelectorAll('#signupForm .form-input');
       const username = inputs[0].value.trim();
-      const email = inputs[1].value.trim(); // not used in backend
+      const email = inputs[1].value.trim();
       const password = inputs[2].value;
       const confirm = inputs[3].value;
+      
       if (password !== confirm) {
         alert('Passwords do not match');
         return;
       }
-      apiPost('/signup', { username, password }).then(res => {
-        if (res.success) {
-          currentUser = res.username;
-          closeModal('authModal');
-          updateAuthUI();
-          loadPDFs();
-        } else {
-          alert('Signup failed: ' + (res.error || 'Unknown error'));
-        }
-      });
-    }
-    // Logout
-    function handleLogout() {
-      apiPost('/logout', {}).then(() => {
-        currentUser = null;
-        updateAuthUI();
-        clearHistoryUI();
-        clearPadsUI();
-      });
+      
+      // Simulate signup
+      currentUser = username;
+      closeModal('authModal');
+      alert('Account created successfully! (Simulated)');
     }
     
-    // --- UI updates for auth ---
-    function updateAuthUI() {
-      const nav = document.querySelector('nav');
-      let userBtn = document.getElementById('userBtn');
-      let resetBtn = document.getElementById('resetPwdBtn');
-      if (currentUser) {
-        if (!userBtn) {
-          userBtn = document.createElement('a');
-          userBtn.id = 'userBtn';
-          userBtn.className = 'cursor-pointer';
-          nav.appendChild(userBtn);
-        }
-        userBtn.textContent = `Logout (${currentUser})`;
-        userBtn.onclick = handleLogout;
-        if (!resetBtn) {
-          resetBtn = document.createElement('a');
-          resetBtn.id = 'resetPwdBtn';
-          resetBtn.className = 'cursor-pointer';
-          resetBtn.textContent = 'Reset Password';
-          resetBtn.onclick = showResetPasswordModal;
-          nav.appendChild(resetBtn);
-        }
-        nav.querySelector('a[onclick*="openAuthModal"]').style.display = 'none';
-      } else {
-        if (userBtn) userBtn.remove();
-        if (resetBtn) resetBtn.remove();
-        nav.querySelector('a[onclick*="openAuthModal"]').style.display = '';
-      }
-    }
-    
-    // --- Password reset ---
-    function showResetPasswordModal() {
-      let modal = document.getElementById('resetPwdModal');
-      if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'resetPwdModal';
-        modal.className = 'modal fixed inset-0 flex items-center justify-center z-50';
-        modal.innerHTML = `
-          <div class="modal-content">
-            <h3 class="mb-4 text-lg font-bold">Reset Password</h3>
-            <input type="password" id="resetPwd1" placeholder="New Password" class="form-input" />
-            <input type="password" id="resetPwd2" placeholder="Confirm Password" class="form-input" />
-            <button class="btn w-full" onclick="handleResetPassword()">Reset</button>
-            <button class="btn btn-secondary w-full mt-2" onclick="closeModal('resetPwdModal')">Cancel</button>
-          </div>`;
-        document.body.appendChild(modal);
-      }
-      openModal('resetPwdModal');
-    }
-    function handleResetPassword() {
-      const p1 = document.getElementById('resetPwd1').value;
-      const p2 = document.getElementById('resetPwd2').value;
-      if (p1 !== p2 || !p1) {
-        alert('Passwords do not match');
-        return;
-      }
-      apiPost('/reset_password', { password: p1 }).then(res => {
-        if (res.success) {
-          alert('Password reset successful!');
-          closeModal('resetPwdModal');
-        } else {
-          alert('Failed to reset password');
-        }
-      });
-    }
-    
-    // --- PDF helpers ---
-    function savePDF() {
-      fetch('/report', { method: 'POST', credentials: 'same-origin' })
-        .then(res => res.blob())
-        .then(blob => {
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'parsewithme_report.pdf';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          window.URL.revokeObjectURL(url);
-        });
-    }
-    
-    // --- Parse functionality (search) ---
+    // Parse functionality
     function startParsing() {
-      if (!currentUser) {
-        openAuthModal('login');
-        return;
-      }
       const keyword = document.getElementById('keywordInput').value.trim();
       if (!keyword) {
         alert('Please enter a keyword or URL to parse');
         return;
       }
-      // Save search to history with username before parsing
-      saveSearchToHistory(keyword, currentUser);
-      document.getElementById('loadingIndicator').classList.remove('hidden');
+      
+      document.getElementById('loadingIndicator').style.display = 'block';
       document.getElementById('parseResult').style.display = 'none';
-      apiPost('/extract', { keyword, num_results: 5 }).then(res => {
-        document.getElementById('loadingIndicator').classList.add('hidden');
-        showParseResults(res);
-        loadHistory();
-        loadPDFs();
-      }).catch((err) => {
-        document.getElementById('loadingIndicator').classList.add('hidden');
-        openAuthModal('login');
-      });
+      
+      // Simulate parsing
+      setTimeout(() => {
+        document.getElementById('loadingIndicator').style.display = 'none';
+        document.getElementById('parseResult').style.display = 'block';
+        document.getElementById('downloadPdf').href = `data:text/plain;charset=utf-8,${encodeURIComponent(`Sample PDF content for: ${keyword}`)}`;
+        document.getElementById('downloadPdf').download = `parsewithme_${keyword.replace(/\s+/g, '_')}.pdf`;
+      }, 2000);
     }
-
-    function saveSearchToHistory(keyword, username) {
-      // Save to backend for persistent history
-      const now = new Date();
-      const timestamp = now.toLocaleString();
-      apiPost('/history', { keyword, timestamp }).then(() => {
-        loadHistory(); // Refresh history after saving
-      });
-    }
-    
-    // --- Shuffle Results ---
-let lastResults = null;
-function shuffleResults() {
-  if (!lastResults) return;
-  // Shuffle each platform's results
-  const shuffled = {};
-  for (const key of Object.keys(lastResults)) {
-    if (Array.isArray(lastResults[key])) {
-      shuffled[key] = [...lastResults[key]].sort(() => Math.random() - 0.5);
-    } else {
-      shuffled[key] = lastResults[key];
-    }
-  }
-  showParseResults(shuffled, true);
-}
-
-function showParseResults(res, isShuffle) {
-  lastResults = res;
-  const resultDiv = document.getElementById('parseResult');
-  let html = `<h3 class="text-xl mb-4 font-bold text-center">Parsing Complete!${isShuffle ? ' (Shuffled)' : ''}</h3>`;
-  html += '<div class="w-full max-w-5xl mx-auto bg-slate-900/80 rounded-2xl shadow-2xl p-8 flex flex-wrap gap-6 justify-center items-stretch">';
-
-  function platformCard(title, icon, color, items, renderFn) {
-    if (!items || !items.length) return '';
-    return `
-      <div class="flex-1 min-w-[320px] max-w-[420px] flex flex-col justify-between rounded-xl shadow-lg p-5 bg-gradient-to-br from-${color}-900 to-${color}-700 border border-${color}-400/30">
-        <div class="flex items-center mb-3">
-          <img src="${icon}" class="w-8 h-8 mr-2" alt="${title} icon"/>
-          <span class="font-semibold text-lg text-${color}-200">${title}</span>
-        </div>
-        <ul class="space-y-2 text-sm">${items.map(renderFn).join('')}</ul>
-      </div>
-    `;
-  }
-
-  html += platformCard(
-    'Reddit',
-    'https://cdn-icons-png.flaticon.com/512/2111/2111589.png',
-    'orange',
-    res.reddit_posts,
-    p => `<li class="bg-orange-800/30 rounded p-2"><b>${p.title || ''}</b><br>${p.text || ''}<br><a href="${p.url || ''}" target="_blank" class="underline text-orange-200">${p.url ? 'View Post' : ''}</a></li>`
-  );
-  html += platformCard(
-    'Telegram',
-    'https://cdn-icons-png.flaticon.com/512/2111/2111646.png',
-    'blue',
-    // Always show the Telegram section, even if empty
-    (res.telegram_messages && res.telegram_messages.length > 0)
-      ? res.telegram_messages
-      : [{chat: '', text: '<i>No Telegram results found</i>', date: ''}],
-    m => `<li class="bg-blue-800/30 rounded p-2">
-      <b>${m.chat || ''}</b><br>${m.text || ''}${m.date ? `<br><span class='text-xs text-gray-400'>${m.date}</span>` : ''}
-    </li>`
-  );
-  html += platformCard(
-    'YouTube',
-    'https://cdn-icons-png.flaticon.com/512/1384/1384060.png',
-    'red',
-    res.youtube_videos,
-    v => `<li class="bg-red-800/30 rounded p-2"><b>${v.title}</b><br><a href="${v.url}" target="_blank" class="underline text-red-200">Watch</a> <span class="ml-2 text-xs text-red-100">${v.channel || ''}</span></li>`
-  );
-  html += platformCard(
-    'Instagram',
-    'https://cdn-icons-png.flaticon.com/512/2111/2111463.png',
-    'purple',
-    res.instagram_posts,
-    p => `<li class="bg-purple-800/30 rounded p-2 flex flex-col gap-1">
-      <span class="font-semibold text-purple-200">
-        ${p.username ? `<a href='https://instagram.com/${p.username}' target='_blank' class='underline text-purple-200'>@${p.username}</a>` : ''}
-      </span>
-      <span>${p.caption || ''}</span>
-      ${p.image_url ? `<img src='${p.image_url}' class='rounded mt-2 max-h-40 object-cover border border-purple-400/30' alt='Instagram post'/>` : ''}
-      ${p.url ? `<a href='${p.url}' target='_blank' class='underline text-purple-200'>View Post</a>` : ''}
-    </li>`
-  );
-  html += platformCard(
-    'Facebook',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1024px-2021_Facebook_icon.svg.png',
-    'indigo',
-    res.facebook_videos,
-    v => `<li class="bg-indigo-800/30 rounded p-2 flex flex-col gap-1">
-      <span class="font-semibold text-indigo-200">
-        ${v.username ? `<a href='https://facebook.com/${v.username}' target='_blank' class='underline text-indigo-200'>${v.username}</a>` : ''}
-      </span>
-      <span>${v.title || ''}</span>
-      ${v.url ? `<a href='${v.url}' target='_blank' class='underline text-indigo-200'>View Post</a>` : ''}
-    </li>`
-  );
-
-  html += '</div>';
-  html += '<div class="flex gap-4 mt-6"><button class="btn flex-1" onclick="savePDFButton()">Save PDF</button><button class="btn btn-secondary flex-1" onclick="shuffleResults()">Shuffle Results</button></div>';
-  resultDiv.innerHTML = html;
-  resultDiv.style.display = 'block';
-}
-    
-    // --- Save pad ---
-    function savePad() {
-      const pad = document.getElementById('parseResult').innerHTML;
-      apiPost('/save', { pad }).then(res => {
-        if (res.success) {
-          alert('Pad saved!');
-          loadPads();
-        } else {
-          alert('Failed to save pad');
-        }
-      });
-    }
-    
-    // --- History ---
-    function loadHistory() {
-      apiGet('/history').then(res => {
-        showHistory(res.history || []);
-        // showHistoryBox(); // removed
-      });
-    }
-    function showHistory(history) {
-      let histDiv = document.getElementById('historyDiv');
-      if (!histDiv) {
-        histDiv = document.createElement('div');
-        histDiv.id = 'historyDiv';
-        histDiv.className = 'parse-result';
-        document.querySelector('#parse').appendChild(histDiv);
-      }
-      let clearBtn = `<button class="btn btn-secondary mb-2" onclick="clearHistory()">Clear History</button>`;
-      histDiv.innerHTML = '<h3>Search History</h3>' + clearBtn + (history.length ? '<ul>' + history.map(h => `<li>${h}</li>`).join('') + '</ul>' : '<i>No history</i>');
-      histDiv.style.display = 'block';
-    }
-    function clearHistory() {
-      apiPost('/history/clear', {}).then(() => {
-        loadHistory();
-      });
-    }
-    function clearHistoryUI() {
-      const histDiv = document.getElementById('historyDiv');
-      if (histDiv) histDiv.style.display = 'none';
-    }
-    
-    // --- Pads ---
-    function loadPads() {}
-    function showPads() {}
-    function clearPadsUI() {
-      const padDiv = document.getElementById('padsDiv');
-      if (padDiv) padDiv.remove();
-    }
-    
-    // --- PDF (was pad) ---
-    function savePDFButton() {
-      savePDF();
-    }
-    function loadPDFs() {
-      apiGet('/pdfs').then(res => {
-        showPDFs(res.pdfs || []);
-        showPDFBox();
-      });
-    }
-    function showPDFs(pdfs) {
-      let pdfDiv = document.getElementById('pdfsDiv');
-      if (!pdfDiv) {
-        pdfDiv = document.createElement('div');
-        pdfDiv.id = 'pdfsDiv';
-        pdfDiv.className = 'parse-result';
-        document.querySelector('#parse').appendChild(pdfDiv);
-      }
-      pdfDiv.innerHTML = '<h3>Saved PDFs</h3>' + (pdfs.length ? '<ul>' + pdfs.map((p, i) => `<li>PDF ${i+1}: <a href="/pdfs/${encodeURIComponent(p)}" target="_blank" class="underline">Download</a></li>`).join('') + '</ul>' : '<i>No PDFs saved</i>');
-      pdfDiv.style.display = 'block';
-    }
-    function clearPDFsUI() {
-      const pdfDiv = document.getElementById('pdfsDiv');
-      if (pdfDiv) pdfDiv.style.display = 'none';
-    }
-    
-    // --- Attach event handlers ---
-    document.querySelector('#loginForm .btn').onclick = handleLogin;
-    document.querySelector('#signupForm .btn').onclick = handleSignup;
-    
-    // On load, check if logged in (try to load history/pads)
-    window.addEventListener('DOMContentLoaded', () => {
-      updateAuthUI();
-      // Hide history and PDF boxes until login
-      const pdfBox = document.getElementById('pdfBox');
-      if (pdfBox) pdfBox.style.display = 'none';
-    });
     
     // Close modal when clicking outside
     window.addEventListener('click', (event) => {
@@ -921,25 +740,10 @@ function showParseResults(res, isShuffle) {
       }
     });
     
-    function showHistoryBox() {
-  apiGet('/history').then(res => {
-    const box = document.getElementById('historyBox');
-    if (!box) return;
-    box.innerHTML = '<h3 class="font-bold mb-2">Search History</h3>' +
-      (res.history && res.history.length ? '<ul>' + res.history.map(h => {
-        // Try to extract keyword, timestamp, and username from the history string
-        let match = h.match(/^(.*?)\s+—\s+(.*?)\s+—\s+(.*)$/);
-        let keyword = h, timestamp = '', username = '';
-        if (match) {
-          keyword = match[1];
-          timestamp = match[2];
-          username = match[3];
-        }
-        return `<li><span class='font-semibold'>${keyword}</span> <span class='text-xs text-gray-400'>${timestamp}</span> <span class='text-xs text-green-400 ml-2'>@${username}</span> <a href="#" class="underline text-blue-300 ml-2" title="Go to result" onclick="startParsingFromHistory('${keyword.replace(/'/g, '\'')}')">🔎</a></li>`;
-      }).join('') + '</ul>' : '<div>No history yet.</div>');
-    box.style.display = 'block';
-  });
-}
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      // Any initialization code if needed
+    });
   </script>
 </body>
 </html>
