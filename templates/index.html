@@ -71,7 +71,7 @@
       box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
     }
     
-    /* Header */
+    /* Header - Default (Website) */
     header {
       background: #000000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.7);
@@ -98,37 +98,61 @@
       letter-spacing: 1px;
     }
     
-    /* Navigation */
-nav {
-  display: flex;
-  gap: 0.5rem;
-}
-
-/* Default styles for website */
-nav a {
-  color: #e0e7ff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  white-space: nowrap;
-}
-
-/* WebView-specific styles */
-@media all and (display-mode: standalone) {
-  nav a {
-    font-size: 0.8rem;  /* Smaller font size in app */
-    padding: 0.4rem;    /* Smaller padding in app */
-  }
-}
-
-/* Hover effects (same for both) */
-nav a:hover {
-  color: #ec4899;
-  background: rgba(236, 72, 153, 0.1);
-  text-decoration: none;
-}
+    /* Navigation - Default (Website) */
+    nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    nav a {
+      color: #e0e7ff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    
+    /* WebView-specific header layout */
+    @media all and (display-mode: standalone) {
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem 1rem;
+      }
+    
+      .logo-text {
+        margin-bottom: 0.8rem;
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+      }
+    
+      nav {
+        flex-direction: column;
+        gap: 0.4rem;
+        width: 100%;
+        align-items: center;
+      }
+    
+      nav a {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        background: rgba(30, 41, 59, 0.7);
+        border-radius: 8px;
+        margin: 0.1rem 0;
+      }
+    }
+    
+    /* Hover effects */
+    nav a:hover {
+      color: #ec4899;
+      background: rgba(236, 72, 153, 0.1);
+    }
     
     /* Main Content */
     main {
@@ -459,15 +483,23 @@ nav a:hover {
     @media (min-width: 768px) {
       header {
         padding: 1rem 2rem;
+        flex-direction: row;
       }
       
       .logo-text {
         font-size: 1.8rem;
+        margin-bottom: 0;
+      }
+      
+      nav {
+        flex-direction: row;
       }
       
       nav a {
         font-size: 1rem;
         padding: 0.5rem 1rem;
+        width: auto;
+        background: transparent;
       }
       
       main {
