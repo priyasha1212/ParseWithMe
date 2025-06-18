@@ -71,7 +71,7 @@
       box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
     }
     
-    /* Header - Default (Website) */
+    /* Header - Simplified for App */
     header {
       background: #000000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.7);
@@ -82,7 +82,7 @@
       z-index: 50;
       padding: 1rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
     }
     
@@ -96,40 +96,6 @@
       color: transparent;
       text-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
       letter-spacing: 1px;
-    }
-    
-    /* Navigation - Default (Website) */
-    nav {
-      display: flex;
-      gap: 0.5rem;
-    }
-    
-    nav a {
-      color: #e0e7ff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.5rem;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      white-space: nowrap;
-    }
-    
-    /* Hide navigation in WebView */
-    @media all and (display-mode: standalone) {
-      nav {
-        display: none;
-      }
-      
-      header {
-        justify-content: center;
-        padding: 0.8rem 1rem;
-      }
-    }
-    
-    /* Hover effects */
-    nav a:hover {
-      color: #ec4899;
-      background: rgba(236, 72, 153, 0.1);
     }
     
     /* Main Content */
@@ -467,11 +433,6 @@
         font-size: 1.8rem;
       }
       
-      nav a {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-      }
-      
       main {
         padding-top: 100px;
         max-width: 900px;
@@ -515,13 +476,6 @@
 <body>
   <header>
     <div class="logo-text">PARSEwithME</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#platforms">Platforms</a>
-      <a href="#parse">Parse</a>
-      <a href="#about">About</a>
-      <a onclick="openAuthModal('login')" class="cursor-pointer">Login</a>
-    </nav>
   </header>
 
   <main>
