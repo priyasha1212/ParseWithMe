@@ -114,37 +114,15 @@
       white-space: nowrap;
     }
     
-    /* WebView-specific header layout */
+    /* Hide navigation in WebView */
     @media all and (display-mode: standalone) {
-      header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.8rem 1rem;
-      }
-    
-      .logo-text {
-        margin-bottom: 0.8rem;
-        font-size: 1.5rem;
-        text-align: center;
-        width: 100%;
-      }
-    
       nav {
-        flex-direction: column;
-        gap: 0.4rem;
-        width: 100%;
-        align-items: center;
+        display: none;
       }
-    
-      nav a {
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem;
-        font-size: 0.8rem;
-        background: rgba(30, 41, 59, 0.7);
-        border-radius: 8px;
-        margin: 0.1rem 0;
+      
+      header {
+        justify-content: center;
+        padding: 0.8rem 1rem;
       }
     }
     
@@ -483,23 +461,15 @@
     @media (min-width: 768px) {
       header {
         padding: 1rem 2rem;
-        flex-direction: row;
       }
       
       .logo-text {
         font-size: 1.8rem;
-        margin-bottom: 0;
-      }
-      
-      nav {
-        flex-direction: row;
       }
       
       nav a {
         font-size: 1rem;
         padding: 0.5rem 1rem;
-        width: auto;
-        background: transparent;
       }
       
       main {
