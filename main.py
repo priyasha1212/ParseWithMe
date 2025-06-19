@@ -22,9 +22,9 @@ DEFAULT_PASSWORD = "yash"
 YOUTUBE_API_KEY = 'AIzaSyBPr4RJFb6LIa5LlgpO1SFpoZ_DgZSTyMk'
 
 # Telegram API credentials (replace with your actual credentials)
-API_ID = '23368075'      # <-- Replace with your Telegram api_id (int)
-API_HASH = 'd210e9118b692353d3c8dfb17f72ca9e'  # <-- Replace with your Telegram api_hash (str)
-TELEGRAM_SESSION = 'parsewithme_telegram'  # session file name
+API_ID = '25817557'      # <-- Replace with your Telegram api_id (int)
+API_HASH = '7d5b0d255fff646e6dea9e2008d1c1c3'  # <-- Replace with your Telegram api_hash (str)
+TELEGRAM_SESSION = 'neurofeed_telegram'  # session file name
 
 # Global variables
 saved_data = {}
@@ -509,25 +509,95 @@ def reset_password():
 
 @app.route('/report', methods=['POST'])
 def report():
-    # Generate PDF from last search result (saved_data)
+    # Accept results from frontend and generate PDF from them
     from fpdf import FPDF
     import tempfile
+    data = request.get_json()
+    # Expecting keys: reddit_posts, telegram_messages, youtube_videos, instagram_posts, facebook_videos
+    reddit_posts = data.get('reddit_posts', [])
+    telegram_messages = data.get('telegram_messages', [])
+    youtube_videos = data.get('youtube_videos', [])
+    instagram_posts = data.get('instagram_posts', [])
+    facebook_videos = data.get('facebook_videos', [])
+
     pdf = FPDF()
     pdf.add_page()
-    pdf.set_font('Arial', 'B', 16)
-    pdf.cell(0, 10, 'PARSEwithMe Report', ln=1, align='C')
-    pdf.set_font('Arial', '', 12)
-    for section, items in saved_data.items():
-        if not isinstance(items, list):
-            continue
-        pdf.set_font('Arial', 'B', 14)
-        pdf.cell(0, 10, section.replace('_', ' ').title(), ln=1)
-        pdf.set_font('Arial', '', 12)
-        for item in items:
-            for k, v in item.items():
-                pdf.multi_cell(0, 8, f"{k}: {v}")
-            pdf.ln(2)
-        pdf.ln(4)
+    pdf.set_font("Arial", size=16, style='B')
+    pdf.cell(200, 10, "PARSEwithME Report", ln=True, align="C")
+    pdf.ln(10)
+    pdf.set_font("Arial", size=12)
+
+    if reddit_posts:
+        pdf.set_font("Arial", size=14, style='B')
+        pdf.cell(200, 10, "Reddit Posts:", ln=True)
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        pdf.set_font("Arial", size=12)
+        for post in reddit_posts:
+            pdf.multi_cell(0, 10, f"Title: {sanitize_text(post.get('title',''))}")
+            pdf.multi_cell(0, 10, f"URL: {sanitize_text(post.get('url',''))}")
+            pdf.ln(3)
+            pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+            pdf.ln(5)
+
+    if telegram_messages:
+        pdf.set_font("Arial", size=14, style='B')
+        pdf.cell(200, 10, "Telegram Messages:", ln=True)
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        pdf.set_font("Arial", size=12)
+        for msg in telegram_messages:
+            pdf.multi_cell(0, 10, f"Chat: {sanitize_text(msg.get('chat',''))}")
+            pdf.multi_cell(0, 10, f"Message: {sanitize_text(msg.get('text',''))}")
+            pdf.multi_cell(0, 10, f"Date: {sanitize_text(msg.get('date',''))}")
+            pdf.ln(3)
+            pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+            pdf.ln(5)
+
+    if youtube_videos:
+        pdf.set_font("Arial", size=14, style='B')
+        pdf.cell(200, 10, "YouTube Videos:", ln=True)
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        pdf.set_font("Arial", size=12)
+        for video in youtube_videos:
+            pdf.multi_cell(0, 10, f"Title: {sanitize_text(video.get('title',''))}")
+            pdf.multi_cell(0, 10, f"Channel: {sanitize_text(video.get('channel',''))}")
+            pdf.multi_cell(0, 10, f"URL: {sanitize_text(video.get('url',''))}")
+            pdf.ln(3)
+            pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+            pdf.ln(5)
+
+    if instagram_posts:
+        pdf.set_font("Arial", size=14, style='B')
+        pdf.cell(200, 10, "Instagram Posts:", ln=True)
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        pdf.set_font("Arial", size=12)
+        for post in instagram_posts:
+            pdf.multi_cell(0, 10, f"Username: @{sanitize_text(post.get('owner_username',''))}")
+            pdf.multi_cell(0, 10, f"Post URL: {sanitize_text(post.get('url',''))}")
+            if post.get('channel_url'):
+                pdf.multi_cell(0, 10, f"Channel URL: {sanitize_text(post.get('channel_url',''))}")
+            pdf.ln(3)
+            pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+            pdf.ln(5)
+
+    if facebook_videos:
+        pdf.set_font("Arial", size=14, style='B')
+        pdf.cell(200, 10, "Facebook Videos:", ln=True)
+        pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+        pdf.ln(5)
+        pdf.set_font("Arial", size=12)
+        for video in facebook_videos:
+            pdf.multi_cell(0, 10, f"Username: {sanitize_text(video.get('username',''))}")
+            pdf.multi_cell(0, 10, f"Post URL: {sanitize_text(video.get('url',''))}")
+            if video.get('page_url'):
+                pdf.multi_cell(0, 10, f"Page URL: {sanitize_text(video.get('page_url',''))}")
+            pdf.ln(3)
+            pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+            pdf.ln(5)
+
     tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.pdf')
     pdf.output(tmp.name)
     tmp.close()
@@ -547,6 +617,26 @@ def get_pdf(filename):
     if not os.path.exists(path):
         return '', 404
     return send_file(path, as_attachment=True)
+
+@app.route('/pdfs/delete', methods=['POST'])
+def delete_pdfs():
+    if 'username' not in session:
+        return jsonify({'success': False, 'error': 'Not logged in'}), 401
+    data = request.get_json()
+    files = data.get('files', [])
+    username = session['username']
+    deleted = []
+    for fname in files:
+        # Only allow deleting from user_data dir for this user
+        user_pdf_path = os.path.join(USER_DATA_DIR, fname)
+        if os.path.exists(user_pdf_path):
+            try:
+                os.remove(user_pdf_path)
+                deleted.append(fname)
+            except Exception as e:
+                continue
+    # Optionally update user's PDF list if you keep one
+    return jsonify({'success': True, 'deleted': deleted})
 
 if __name__ == '__main__':
     import threading
