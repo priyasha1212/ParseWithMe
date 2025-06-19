@@ -22,9 +22,9 @@ DEFAULT_PASSWORD = "yash"
 YOUTUBE_API_KEY = 'AIzaSyBPr4RJFb6LIa5LlgpO1SFpoZ_DgZSTyMk'
 
 # Telegram API credentials (replace with your actual credentials)
-API_ID = '25817557'      # <-- Replace with your Telegram api_id (int)
-API_HASH = '7d5b0d255fff646e6dea9e2008d1c1c3'  # <-- Replace with your Telegram api_hash (str)
-TELEGRAM_SESSION = 'neurofeed_telegram'  # session file name
+API_ID = '23368075'      # <-- Replace with your Telegram api_id (int)
+API_HASH = 'd210e9118b692353d3c8dfb17f72ca9e'  # <-- Replace with your Telegram api_hash (str)
+TELEGRAM_SESSION = 'parsewithme_telegram'  # session file name
 
 # Global variables
 saved_data = {}
