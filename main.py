@@ -173,7 +173,7 @@ def start_scraping(keyword, num_results):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     search_history.append(f"{keyword} — {timestamp} — {username}")
 
-    reddit_posts = fetch_reddit_posts(keyword)
+    reddit_posts = fetch_reddit_posts(keyword, limit=num_results)
     telegram_messages = fetch_telegram_messages(keyword, limit=num_results)
     youtube_videos = fetch_youtube_videos(keyword, max_results=num_results)
     instagram_posts = fetch_instagram_posts(keyword, max_results=num_results)
@@ -408,7 +408,7 @@ def extract():
     keyword = data.get('keyword', '')
     num_results = int(data.get('num_results', 5))
     # Use the scraping logic (no GUI)
-    reddit_posts = fetch_reddit_posts(keyword)
+    reddit_posts = fetch_reddit_posts(keyword, limit=num_results)
     telegram_messages = fetch_telegram_messages(keyword, limit=num_results)
     youtube_videos = fetch_youtube_videos(keyword, max_results=num_results)
     instagram_posts = fetch_instagram_posts(keyword, max_results=num_results)
