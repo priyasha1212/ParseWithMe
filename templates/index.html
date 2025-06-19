@@ -682,7 +682,22 @@
     
     // --- PDF helpers ---
     function savePDF() {
-      fetch('/report', { method: 'POST', credentials: 'same-origin' })
+      if (!lastResults) {
+        alert("No results to save.");
+        return;
+      }
+      fetch('/report', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reddit_posts: lastResults.reddit_posts || [],
+          telegram_messages: lastResults.telegram_messages || [],
+          youtube_videos: lastResults.youtube_videos || [],
+          instagram_posts: lastResults.instagram_posts || [],
+          facebook_videos: lastResults.facebook_videos || []
+        })
+      })
         .then(res => res.blob())
         .then(blob => {
           const url = window.URL.createObjectURL(blob);
@@ -894,12 +909,46 @@ function showParseResults(res, isShuffle) {
         pdfDiv.className = 'parse-result';
         document.querySelector('#parse').appendChild(pdfDiv);
       }
-      pdfDiv.innerHTML = '<h3>Saved PDFs</h3>' + (pdfs.length ? '<ul>' + pdfs.map((p, i) => `<li>PDF ${i+1}: <a href="/pdfs/${encodeURIComponent(p)}" target="_blank" class="underline">Download</a></li>`).join('') + '</ul>' : '<i>No PDFs saved</i>');
+      if (!pdfs.length) {
+        pdfDiv.style.display = 'none';
+        pdfDiv.innerHTML = '';
+        return;
+      }
+      let html = '<h3>Saved PDFs</h3>';
+      html += `<form id="pdfDeleteForm"><ul style='list-style:none;padding:0;'>` +
+        pdfs.map((p, i) =>
+          `<li style='display:flex;align-items:center;gap:8px;margin-bottom:6px;'>
+            <input type='checkbox' class='pdf-checkbox' value='${p}'>
+            PDF ${i+1}: <a href="/pdfs/${encodeURIComponent(p)}" target="_blank" class="underline">Download</a>
+          </li>`
+        ).join('') +
+        `</ul>
+        <button type='button' class='btn btn-secondary mt-2' onclick='deleteSelectedPDFs()'>Delete Selected</button>
+        </form>`;
+      pdfDiv.innerHTML = html;
       pdfDiv.style.display = 'block';
     }
-    function clearPDFsUI() {
-      const pdfDiv = document.getElementById('pdfsDiv');
-      if (pdfDiv) pdfDiv.style.display = 'none';
+    function deleteSelectedPDFs() {
+      const checkboxes = document.querySelectorAll('.pdf-checkbox:checked');
+      if (!checkboxes.length) {
+        alert('No PDFs selected.');
+        return;
+      }
+      const files = Array.from(checkboxes).map(cb => cb.value);
+      fetch('/pdfs/delete', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ files })
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.success) {
+            loadPDFs();
+          } else {
+            alert('Failed to delete PDFs.');
+          }
+        });
     }
     
     // --- Attach event handlers ---
