@@ -781,13 +781,18 @@ function showParseResults(res, isShuffle) {
     `;
   }
 
-  html += platformCard(
-    'Reddit',
-    'https://cdn-icons-png.flaticon.com/512/2111/2111589.png',
-    'orange',
-    res.reddit_posts,
-    p => `<li class="bg-orange-800/30 rounded p-2"><b>${p.title || ''}</b><br>${p.text || ''}<br><a href="${p.url || ''}" target="_blank" class="underline text-orange-200">${p.url ? 'View Post' : ''}</a></li>`
-  );
+html += platformCard(
+  'Reddit',
+  'https://cdn-icons-png.flaticon.com/512/2111/2111589.png',
+  'orange',
+  (res.reddit_posts && res.reddit_posts.length > 0)
+    ? res.reddit_posts
+    : [{ title: 'No Reddit results found.', url: '' }],
+  p => `<li class="bg-orange-800/30 rounded p-2">
+          <b>${p.title || ''}</b>
+          ${p.url ? `<br><a href="${p.url}" target="_blank" class="underline text-orange-200">View Post</a>` : ''}
+        </li>`
+);
   html += platformCard(
     'Telegram',
     'https://cdn-icons-png.flaticon.com/512/2111/2111646.png',
