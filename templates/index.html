@@ -896,66 +896,7 @@ html += platformCard(
       if (padDiv) padDiv.remove();
     }
     
-    // --- PDF (was pad) ---
-    function savePDFButton() {
-      savePDF();
-    }
-    function loadPDFs() {
-      apiGet('/pdfs').then(res => {
-        showPDFs(res.pdfs || []);
-        showPDFBox();
-      });
-    }
-    function showPDFs(pdfs) {
-      let pdfDiv = document.getElementById('pdfsDiv');
-      if (!pdfDiv) {
-        pdfDiv = document.createElement('div');
-        pdfDiv.id = 'pdfsDiv';
-        pdfDiv.className = 'parse-result';
-        document.querySelector('#parse').appendChild(pdfDiv);
-      }
-      if (!pdfs.length) {
-        pdfDiv.style.display = 'none';
-        pdfDiv.innerHTML = '';
-        return;
-      }
-      let html = '<h3>Saved PDFs</h3>';
-      html += `<form id="pdfDeleteForm"><ul style='list-style:none;padding:0;'>` +
-        pdfs.map((p, i) =>
-          `<li style='display:flex;align-items:center;gap:8px;margin-bottom:6px;'>
-            <input type='checkbox' class='pdf-checkbox' value='${p}'>
-            PDF ${i+1}: <a href="/pdfs/${encodeURIComponent(p)}" target="_blank" class="underline">Download</a>
-          </li>`
-        ).join('') +
-        `</ul>
-        <button type='button' class='btn btn-secondary mt-2' onclick='deleteSelectedPDFs()'>Delete Selected</button>
-        </form>`;
-      pdfDiv.innerHTML = html;
-      pdfDiv.style.display = 'block';
-    }
-    function deleteSelectedPDFs() {
-      const checkboxes = document.querySelectorAll('.pdf-checkbox:checked');
-      if (!checkboxes.length) {
-        alert('No PDFs selected.');
-        return;
-      }
-      const files = Array.from(checkboxes).map(cb => cb.value);
-      fetch('/pdfs/delete', {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ files })
-      })
-        .then(res => res.json())
-        .then(res => {
-          if (res.success) {
-            loadPDFs();
-          } else {
-            alert('Failed to delete PDFs.');
-          }
-        });
-    }
-    
+  
     // --- Attach event handlers ---
     document.querySelector('#loginForm .btn').onclick = handleLogin;
     document.querySelector('#signupForm .btn').onclick = handleSignup;
