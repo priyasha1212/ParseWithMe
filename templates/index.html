@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes" />
   <title>PARSEwithMe</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,6 +20,11 @@
     h1, h2, h3 {
       color: #c4b5fd;
     }
+    html, body{
+      overflow-x:hidden;
+      max-width:100%
+    }
+    
     .btn {
       background: linear-gradient(90deg, #6366f1, #ec4899);
       color: white;
